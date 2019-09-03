@@ -6,21 +6,14 @@ import androidx.constraintlayout.widget.Barrier
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.constraintlayout.widget.ConstraintSet.VERTICAL_GUIDELINE
 import androidx.core.view.ViewCompat
-import trikita.anvil.BaseDSL
-import trikita.anvil.BaseDSL.WRAP
-import trikita.anvil.BaseDSL.dip
-import trikita.anvil.BaseDSL.margin
-import trikita.anvil.BaseDSL.sip
-import trikita.anvil.BaseDSL.size
-import trikita.anvil.BaseDSL.textSize
-import trikita.anvil.DSL
+import trikita.anvil.BaseDSL.*
+import trikita.anvil.DSL.backgroundResource
 import trikita.anvil.DSL.button
 import trikita.anvil.DSL.id
 import trikita.anvil.DSL.text
 import trikita.anvil.DSL.textView
 import trikita.anvil.RenderableView
 import trikita.anvil.constraint.layout.ConstraintDSL
-import trikita.anvil.constraint.layout.ConstraintDSL.applyConstraints
 import trikita.anvil.constraint.layout.ConstraintDSL.barrier
 import trikita.anvil.constraint.layout.ConstraintDSL.bottomConstraintToParent
 import trikita.anvil.constraint.layout.ConstraintDSL.chain
@@ -74,8 +67,8 @@ class ConstraintActivity : AppCompatActivity() {
             override fun view() {
                 constraintLayout {
                     id(layoutId)
-                    DSL.size(DSL.MATCH, DSL.MATCH)
-                    DSL.padding(DSL.dip(8))
+                    size(MATCH, MATCH)
+                    padding(dip(8))
 
                     textView {
                         ConstraintDSL.id(chainTitle)
@@ -177,9 +170,9 @@ class ConstraintActivity : AppCompatActivity() {
 
                     button {
                         ConstraintDSL.id(btnId)
-                        DSL.size(WRAP, WRAP)
+                        size(WRAP, WRAP)
                         text("Button")
-                        margin(DSL.dip(16))
+                        margin(dip(16))
 
                         leftConstraintToRight(guidelineId)
                         topConstraintToBottom(guidelineTitle)
@@ -197,8 +190,8 @@ class ConstraintActivity : AppCompatActivity() {
                     textView {
                         ConstraintDSL.id(txtId)
                         text("Text")
-                        DSL.size(WRAP, WRAP)
-                        DSL.backgroundResource(R.color.colorAccent)
+                        size(WRAP, WRAP)
+                        backgroundResource(R.color.colorAccent)
 
                         rightConstraintToParent()
                         bottomConstraintToParent()
@@ -256,7 +249,7 @@ class ConstraintActivity : AppCompatActivity() {
 
                     group {
                         ConstraintDSL.id(groupId)
-                        BaseDSL.visibility(false)
+                        visibility(false)
                         ConstraintDSL.referencedIds(
                             intArrayOf(
                                 angle225,
