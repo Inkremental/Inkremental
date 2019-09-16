@@ -9,6 +9,7 @@ import trikita.anvil.BaseDSL
 import trikita.anvil.DSL
 import trikita.anvil.DSL.*
 import trikita.anvil.RenderableView
+import trikita.anvil.renderable
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,9 +19,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // RenderableView wraps Anvil and hooks into View lifecycle
-        setContentView(object : RenderableView(this) {
-            override fun view() {
+        // RenderableView (returned by [renderable] function) wraps Anvil and hooks into View lifecycle
+        setContentView(renderable {
                 linearLayout {
                     size(MATCH, MATCH)
                     padding(dip(8))
@@ -72,7 +72,6 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
-            }
         })
     }
 
