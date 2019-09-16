@@ -35,6 +35,10 @@ android {
 	testOptions {
 		unitTests.returnDefaultValues = true
 	}
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
 apply from: 'attr-quirks.gradle'
