@@ -12,7 +12,7 @@ android {
 	}
 }
 
-val materialVersion = "1.1.0"
+val materialVersion = "1.2.0-alpha04"
 
 inkremental {
 	androidLibrary("material", materialVersion) {
@@ -71,7 +71,9 @@ inkremental {
 				"com.google.android.material.floatingactionbutton.FloatingActionButton" to mapOf(
 						"setCompatElevation" to listOf(
 								FloatPixelToDipSizeTransformer,
-								RequiresApiTransformer(21)))
+								RequiresApiTransformer(21))),
+				"com.google.android.material.slider.Slider" to mapOf(
+						"setThumbElevation" to listOf(FloatPixelToDipSizeTransformer))
 		)
 	}
 }

@@ -28,6 +28,8 @@ abstract class TextInputLayoutScope : LinearLayoutScope() {
   fun boxBackgroundColorResource(arg: Int): Unit = attr("boxBackgroundColorResource", arg)
   fun boxBackgroundMode(arg: Int): Unit = attr("boxBackgroundMode", arg)
   fun boxStrokeColor(arg: Int): Unit = attr("boxStrokeColor", arg)
+  fun boxStrokeColorStateList(arg: ColorStateList): Unit = attr("boxStrokeColorStateList", arg)
+  fun boxStrokeErrorColor(arg: ColorStateList?): Unit = attr("boxStrokeErrorColor", arg)
   fun counterEnabled(arg: Boolean): Unit = attr("counterEnabled", arg)
   fun counterMaxLength(arg: Int): Unit = attr("counterMaxLength", arg)
   fun counterOverflowTextAppearance(arg: Int): Unit = attr("counterOverflowTextAppearance", arg)
@@ -49,6 +51,7 @@ abstract class TextInputLayoutScope : LinearLayoutScope() {
   fun endIconTintMode(arg: PorterDuff.Mode?): Unit = attr("endIconTintMode", arg)
   fun endIconVisible(arg: Boolean): Unit = attr("endIconVisible", arg)
   fun error(arg: CharSequence?): Unit = attr("error", arg)
+  fun errorContentDescription(arg: CharSequence?): Unit = attr("errorContentDescription", arg)
   fun errorEnabled(arg: Boolean): Unit = attr("errorEnabled", arg)
   fun errorIconDrawable(arg: Drawable?): Unit = attr("errorIconDrawable", arg)
   fun errorIconDrawable(arg: Int): Unit = attr("errorIconDrawable", arg)
@@ -65,6 +68,12 @@ abstract class TextInputLayoutScope : LinearLayoutScope() {
   fun hintEnabled(arg: Boolean): Unit = attr("hintEnabled", arg)
   fun hintTextAppearance(arg: Int): Unit = attr("hintTextAppearance", arg)
   fun hintTextColor(arg: ColorStateList?): Unit = attr("hintTextColor", arg)
+  fun placeholderText(arg: CharSequence?): Unit = attr("placeholderText", arg)
+  fun placeholderTextAppearance(arg: Int): Unit = attr("placeholderTextAppearance", arg)
+  fun placeholderTextColor(arg: ColorStateList?): Unit = attr("placeholderTextColor", arg)
+  fun prefixText(arg: CharSequence?): Unit = attr("prefixText", arg)
+  fun prefixTextAppearance(arg: Int): Unit = attr("prefixTextAppearance", arg)
+  fun prefixTextColor(arg: ColorStateList): Unit = attr("prefixTextColor", arg)
   fun startIconCheckable(arg: Boolean): Unit = attr("startIconCheckable", arg)
   fun startIconContentDescription(arg: CharSequence?): Unit = attr("startIconContentDescription",
       arg)
@@ -78,7 +87,10 @@ abstract class TextInputLayoutScope : LinearLayoutScope() {
   fun startIconTintList(arg: ColorStateList?): Unit = attr("startIconTintList", arg)
   fun startIconTintMode(arg: PorterDuff.Mode?): Unit = attr("startIconTintMode", arg)
   fun startIconVisible(arg: Boolean): Unit = attr("startIconVisible", arg)
-  fun textInputAccessibilityDelegate(arg: TextInputLayout.AccessibilityDelegate): Unit =
+  fun suffixText(arg: CharSequence?): Unit = attr("suffixText", arg)
+  fun suffixTextAppearance(arg: Int): Unit = attr("suffixTextAppearance", arg)
+  fun suffixTextColor(arg: ColorStateList): Unit = attr("suffixTextColor", arg)
+  fun textInputAccessibilityDelegate(arg: TextInputLayout.AccessibilityDelegate?): Unit =
       attr("textInputAccessibilityDelegate", arg)
   fun typeface(arg: Typeface?): Unit = attr("typeface", arg)
   companion object : TextInputLayoutScope() {

@@ -28,6 +28,7 @@ import com.google.android.material.circularreveal.CircularRevealWidget
 import com.google.android.material.circularreveal.cardview.CircularRevealCardView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.internal.CheckableImageButton
 import com.google.android.material.internal.FlowLayout
 import com.google.android.material.internal.NavigationMenuItemView
@@ -36,6 +37,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.radiobutton.MaterialRadioButton
 import com.google.android.material.resources.TextAppearance
 import com.google.android.material.shape.ShapeAppearanceModel
+import com.google.android.material.slider.Slider
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputLayout
@@ -646,6 +648,10 @@ object MaterialSetter : Inkremental.AttributeSetter<Any> {
         v.setShapeAppearanceModel(arg)
         true
       }
+      v is ShapeableImageView && arg is ShapeAppearanceModel -> {
+        v.setShapeAppearanceModel(arg)
+        true
+      }
       else -> false
     }
     "strokeColor" -> when {
@@ -654,6 +660,10 @@ object MaterialSetter : Inkremental.AttributeSetter<Any> {
         true
       }
       v is MaterialCardView && arg is ColorStateList -> {
+        v.setStrokeColor(arg)
+        true
+      }
+      v is ShapeableImageView && arg is ColorStateList? -> {
         v.setStrokeColor(arg)
         true
       }
@@ -668,6 +678,10 @@ object MaterialSetter : Inkremental.AttributeSetter<Any> {
         v.setStrokeColorResource(arg)
         true
       }
+      v is ShapeableImageView && arg is Int -> {
+        v.setStrokeColorResource(arg)
+        true
+      }
       else -> false
     }
     "strokeWidth" -> when {
@@ -679,11 +693,30 @@ object MaterialSetter : Inkremental.AttributeSetter<Any> {
         v.setStrokeWidth(arg)
         true
       }
+      v is ShapeableImageView && arg is Int -> {
+        v.setStrokeWidth(arg)
+        true
+      }
       else -> false
     }
     "strokeWidthResource" -> when {
       v is MaterialButton && arg is Int -> {
         v.setStrokeWidthResource(arg)
+        true
+      }
+      v is ShapeableImageView && arg is Int -> {
+        v.setStrokeWidthResource(arg)
+        true
+      }
+      else -> false
+    }
+    "selectionRequired" -> when {
+      v is MaterialButtonToggleGroup && arg is Boolean -> {
+        v.setSelectionRequired(arg)
+        true
+      }
+      v is ChipGroup && arg is Boolean -> {
+        v.setSelectionRequired(arg)
         true
       }
       else -> false
@@ -1579,6 +1612,153 @@ object MaterialSetter : Inkremental.AttributeSetter<Any> {
       }
       else -> false
     }
+    "haloColor" -> when {
+      v is Slider && arg is ColorStateList -> {
+        v.setHaloColor(arg)
+        true
+      }
+      else -> false
+    }
+    "haloRadius" -> when {
+      v is Slider && arg is Int -> {
+        v.setHaloRadius(arg)
+        true
+      }
+      else -> false
+    }
+    "haloRadiusResource" -> when {
+      v is Slider && arg is Int -> {
+        v.setHaloRadiusResource(arg)
+        true
+      }
+      else -> false
+    }
+    "labelBehavior" -> when {
+      v is Slider && arg is Int -> {
+        v.setLabelBehavior(arg)
+        true
+      }
+      else -> false
+    }
+    "labelFormatter" -> when {
+      v is Slider && arg is Slider.LabelFormatter? -> {
+        v.setLabelFormatter(arg)
+        true
+      }
+      else -> false
+    }
+    "stepSize" -> when {
+      v is Slider && arg is Float -> {
+        v.setStepSize(arg)
+        true
+      }
+      else -> false
+    }
+    "thumbColor" -> when {
+      v is Slider && arg is ColorStateList -> {
+        v.setThumbColor(arg)
+        true
+      }
+      else -> false
+    }
+    "thumbElevation" -> when {
+      v is Slider && arg is Int -> {
+        v.setThumbElevation(dip(arg).toFloat())
+        true
+      }
+      else -> false
+    }
+    "thumbElevationResource" -> when {
+      v is Slider && arg is Int -> {
+        v.setThumbElevationResource(arg)
+        true
+      }
+      else -> false
+    }
+    "thumbRadius" -> when {
+      v is Slider && arg is Int -> {
+        v.setThumbRadius(arg)
+        true
+      }
+      else -> false
+    }
+    "thumbRadiusResource" -> when {
+      v is Slider && arg is Int -> {
+        v.setThumbRadiusResource(arg)
+        true
+      }
+      else -> false
+    }
+    "tickColor" -> when {
+      v is Slider && arg is ColorStateList -> {
+        v.setTickColor(arg)
+        true
+      }
+      else -> false
+    }
+    "tickColorActive" -> when {
+      v is Slider && arg is ColorStateList -> {
+        v.setTickColorActive(arg)
+        true
+      }
+      else -> false
+    }
+    "tickColorInactive" -> when {
+      v is Slider && arg is ColorStateList -> {
+        v.setTickColorInactive(arg)
+        true
+      }
+      else -> false
+    }
+    "trackColor" -> when {
+      v is Slider && arg is ColorStateList -> {
+        v.setTrackColor(arg)
+        true
+      }
+      else -> false
+    }
+    "trackColorActive" -> when {
+      v is Slider && arg is ColorStateList -> {
+        v.setTrackColorActive(arg)
+        true
+      }
+      else -> false
+    }
+    "trackColorInactive" -> when {
+      v is Slider && arg is ColorStateList -> {
+        v.setTrackColorInactive(arg)
+        true
+      }
+      else -> false
+    }
+    "trackHeight" -> when {
+      v is Slider && arg is Int -> {
+        v.setTrackHeight(arg)
+        true
+      }
+      else -> false
+    }
+    "value" -> when {
+      v is Slider && arg is Float -> {
+        v.setValue(arg)
+        true
+      }
+      else -> false
+    }
+    "valueFrom" -> when {
+      v is Slider && arg is Float -> {
+        v.setValueFrom(arg)
+        true
+      }
+      else -> false
+    }
+    "valueTo" -> when {
+      v is Slider && arg is Float -> {
+        v.setValueTo(arg)
+        true
+      }
+      else -> false
+    }
     "inlineLabel" -> when {
       v is TabLayout && arg is Boolean -> {
         v.setInlineLabel(arg)
@@ -1712,6 +1892,20 @@ object MaterialSetter : Inkremental.AttributeSetter<Any> {
     "boxStrokeColor" -> when {
       v is TextInputLayout && arg is Int -> {
         v.setBoxStrokeColor(arg)
+        true
+      }
+      else -> false
+    }
+    "boxStrokeColorStateList" -> when {
+      v is TextInputLayout && arg is ColorStateList -> {
+        v.setBoxStrokeColorStateList(arg)
+        true
+      }
+      else -> false
+    }
+    "boxStrokeErrorColor" -> when {
+      v is TextInputLayout && arg is ColorStateList? -> {
+        v.setBoxStrokeErrorColor(arg)
         true
       }
       else -> false
@@ -1850,6 +2044,13 @@ object MaterialSetter : Inkremental.AttributeSetter<Any> {
       }
       else -> false
     }
+    "errorContentDescription" -> when {
+      v is TextInputLayout && arg is CharSequence? -> {
+        v.setErrorContentDescription(arg)
+        true
+      }
+      else -> false
+    }
     "errorEnabled" -> when {
       v is TextInputLayout && arg is Boolean -> {
         v.setErrorEnabled(arg)
@@ -1959,6 +2160,48 @@ object MaterialSetter : Inkremental.AttributeSetter<Any> {
       }
       else -> false
     }
+    "placeholderText" -> when {
+      v is TextInputLayout && arg is CharSequence? -> {
+        v.setPlaceholderText(arg)
+        true
+      }
+      else -> false
+    }
+    "placeholderTextAppearance" -> when {
+      v is TextInputLayout && arg is Int -> {
+        v.setPlaceholderTextAppearance(arg)
+        true
+      }
+      else -> false
+    }
+    "placeholderTextColor" -> when {
+      v is TextInputLayout && arg is ColorStateList? -> {
+        v.setPlaceholderTextColor(arg)
+        true
+      }
+      else -> false
+    }
+    "prefixText" -> when {
+      v is TextInputLayout && arg is CharSequence? -> {
+        v.setPrefixText(arg)
+        true
+      }
+      else -> false
+    }
+    "prefixTextAppearance" -> when {
+      v is TextInputLayout && arg is Int -> {
+        v.setPrefixTextAppearance(arg)
+        true
+      }
+      else -> false
+    }
+    "prefixTextColor" -> when {
+      v is TextInputLayout && arg is ColorStateList -> {
+        v.setPrefixTextColor(arg)
+        true
+      }
+      else -> false
+    }
     "startIconCheckable" -> when {
       v is TextInputLayout && arg is Boolean -> {
         v.setStartIconCheckable(arg)
@@ -2023,8 +2266,29 @@ object MaterialSetter : Inkremental.AttributeSetter<Any> {
       }
       else -> false
     }
+    "suffixText" -> when {
+      v is TextInputLayout && arg is CharSequence? -> {
+        v.setSuffixText(arg)
+        true
+      }
+      else -> false
+    }
+    "suffixTextAppearance" -> when {
+      v is TextInputLayout && arg is Int -> {
+        v.setSuffixTextAppearance(arg)
+        true
+      }
+      else -> false
+    }
+    "suffixTextColor" -> when {
+      v is TextInputLayout && arg is ColorStateList -> {
+        v.setSuffixTextColor(arg)
+        true
+      }
+      else -> false
+    }
     "textInputAccessibilityDelegate" -> when {
-      v is TextInputLayout && arg is TextInputLayout.AccessibilityDelegate -> {
+      v is TextInputLayout && arg is TextInputLayout.AccessibilityDelegate? -> {
         v.setTextInputAccessibilityDelegate(arg)
         true
       }

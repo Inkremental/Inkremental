@@ -26,6 +26,7 @@ abstract class ChipGroupScope : FlowLayoutScope() {
   fun chipSpacingVerticalResource(arg: Int): Unit = attr("chipSpacingVerticalResource", arg)
   fun onCheckedChange(arg: ((arg0: ChipGroup, arg1: Int) -> Unit)?): Unit = attr("onCheckedChange",
       arg)
+  fun selectionRequired(arg: Boolean): Unit = attr("selectionRequired", arg)
   fun singleLine(arg: Int): Unit = attr("singleLine", arg)
   fun singleSelection(arg: Boolean): Unit = attr("singleSelection", arg)
   fun singleSelection(arg: Int): Unit = attr("singleSelection", arg)

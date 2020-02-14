@@ -18,6 +18,7 @@ import kotlin.Unit
 fun materialButtonToggleGroup(configure: MaterialButtonToggleGroupScope.() -> Unit = {}) =
     v<MaterialButtonToggleGroup>(configure.bind(MaterialButtonToggleGroupScope))
 abstract class MaterialButtonToggleGroupScope : LinearLayoutScope() {
+  fun selectionRequired(arg: Boolean): Unit = attr("selectionRequired", arg)
   fun singleSelection(arg: Boolean): Unit = attr("singleSelection", arg)
   fun singleSelection(arg: Int): Unit = attr("singleSelection", arg)
   companion object : MaterialButtonToggleGroupScope() {
