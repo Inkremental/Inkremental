@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import dev.inkremental.dsl.android.INIT_LITERAL
 import java.lang.ref.WeakReference
 import java.lang.reflect.InvocationTargetException
 import java.util.*
@@ -42,23 +44,6 @@ object Inkremental {
         if (!attributeSetters.contains(setter)) {
             attributeSetters.add(0, setter)
         }
-    }
-
-    /** Tags: arbitrary data bound to specific views, such as last cached attribute values  */
-    private val tags: MutableMap<View, MutableMap<String, Any?>> = WeakHashMap()
-
-    operator fun set(v: View, key: String, value: Any?) {
-        var attrs = tags[v]
-        if (attrs == null) {
-            attrs = HashMap()
-            tags[v] = attrs
-        }
-        attrs[key] = value
-    }
-
-    operator fun get(v: View?, key: String): Any? {
-        val attrs = tags[v] ?: return null
-        return attrs[key]
     }
 
     /** Starts the new rendering cycle updating all mounted
@@ -108,6 +93,7 @@ object Inkremental {
         val m = mounts[v]
         if (m != null) {
             mounts.remove(v)
+            m.cleanTags()
             if (v is ViewGroup) {
                 val viewGroup = v
                 val childCount = viewGroup.childCount
@@ -196,6 +182,27 @@ object Inkremental {
         private val rootView: WeakReference<View> = WeakReference(v)
         internal val iterator = Iterator()
 
+        /** Tags: arbitrary data bound to specific views, such as last cached attribute values  */
+        private val tags: MutableMap<View, MutableMap<String, Any?>> = WeakHashMap()
+
+        operator fun set(v: View, key: String, value: Any?) {
+            var attrs = tags[v]
+            if (attrs == null) {
+                attrs = HashMap()
+                tags[v] = attrs
+            }
+            attrs[key] = value
+        }
+
+        operator fun get(v: View?, key: String): Any? {
+            val attrs = tags[v] ?: return null
+            return attrs[key]
+        }
+
+        fun cleanTags() {
+            tags.clear()
+        }
+
         @SuppressLint("Assert")
         internal inner class Iterator {
             var views: Deque<View?> = ArrayDeque()
@@ -267,10 +274,10 @@ object Inkremental {
             fun <T : Any> attr(name: String, value: T?) {
                 val currentView = views.peek() ?: return
                 val currentValue = get(currentView, name) as T?
-                if (currentValue == null || currentValue != value) {
+                if (currentValue == null || (currentValue != value && name != INIT_LITERAL)) {
                     for (setter in attributeSetters) {
                         if (setter.set(currentView, name, value, currentValue)) {
-                            set(currentView, name, value)
+                            set(currentView, name, if ( name != INIT_LITERAL) value else true)
                             return
                         }
                     }
@@ -288,9 +295,8 @@ object Inkremental {
             }
 
             fun skip() {
-                var i: Int
                 val vg = views.peek() as ViewGroup?
-                i = indices.pop()
+                var i: Int = indices.pop()
                 while (i < vg!!.childCount) {
                     val v = vg.getChildAt(i)
                     if (get(v, "_anvil") != null) {
