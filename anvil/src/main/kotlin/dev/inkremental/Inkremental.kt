@@ -186,17 +186,12 @@ object Inkremental {
         private val tags: MutableMap<View, MutableMap<String, Any?>> = WeakHashMap()
 
         operator fun set(v: View, key: String, value: Any?) {
-            var attrs = tags[v]
-            if (attrs == null) {
-                attrs = HashMap()
-                tags[v] = attrs
-            }
+            val attrs = tags.getOrPut(v) { HashMap() }
             attrs[key] = value
         }
 
         operator fun get(v: View?, key: String): Any? {
-            val attrs = tags[v] ?: return null
-            return attrs[key]
+            return tags[v]?.get(key)
         }
 
         fun cleanTags() {
