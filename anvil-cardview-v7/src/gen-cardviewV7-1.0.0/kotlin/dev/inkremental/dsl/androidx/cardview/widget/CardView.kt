@@ -5,9 +5,9 @@ package dev.inkremental.dsl.androidx.cardview.widget
 import android.content.res.ColorStateList
 import androidx.cardview.widget.CardView
 import dev.inkremental.Inkremental
+import dev.inkremental.android.Dip
 import dev.inkremental.attr
 import dev.inkremental.bind
-import dev.inkremental.dsl.android.Dip
 import dev.inkremental.dsl.android.widget.FrameLayoutScope
 import dev.inkremental.dsl.androidx.cardview.CardviewV7Setter
 import dev.inkremental.v

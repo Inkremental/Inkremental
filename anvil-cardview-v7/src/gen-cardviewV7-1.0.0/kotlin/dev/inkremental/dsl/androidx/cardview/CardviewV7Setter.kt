@@ -6,7 +6,7 @@ import android.content.res.ColorStateList
 import android.view.View
 import androidx.cardview.widget.CardView
 import dev.inkremental.Inkremental
-import dev.inkremental.dip
+import dev.inkremental.android.dip
 import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int

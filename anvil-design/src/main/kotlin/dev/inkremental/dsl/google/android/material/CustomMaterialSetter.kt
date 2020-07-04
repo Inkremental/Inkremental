@@ -13,9 +13,9 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.inkremental.Inkremental
+import dev.inkremental.android.Dip
+import dev.inkremental.android.dip
 import dev.inkremental.attr
-import dev.inkremental.dip
-import dev.inkremental.dsl.android.Dip
 import dev.inkremental.dsl.android.view.ViewScope
 import dev.inkremental.dsl.google.android.material.appbar.AppBarLayoutScope
 import dev.inkremental.dsl.google.android.material.bottomnavigation.BottomNavigationViewScope

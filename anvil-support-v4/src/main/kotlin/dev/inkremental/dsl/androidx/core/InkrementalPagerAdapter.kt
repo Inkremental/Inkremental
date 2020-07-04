@@ -4,7 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import dev.inkremental.Inkremental
-import dev.inkremental.RenderableView
+import dev.inkremental.android.RenderableView
 
 class InkrementalPagerAdapter<T> : PagerAdapter() {
 

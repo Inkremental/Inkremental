@@ -49,6 +49,7 @@ dependencies {
 	"appcompatV7Inkremental"(project(":anvil", "sdk-17InkrementalDef"))
 
     "appcompatV7InkrementalGen"("androidx.appcompat:appcompat:$appcompatVersion")
+    "appcompatV7InkrementalGen"("androidx.fragment:fragment:1.2.4")
 
 	testImplementation("junit:junit:$junit_version")
 	testImplementation("org.mockito:mockito-core:$mockito_version")

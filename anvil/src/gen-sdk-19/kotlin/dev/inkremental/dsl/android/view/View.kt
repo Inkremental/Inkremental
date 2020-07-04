@@ -14,11 +14,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import dev.inkremental.Inkremental
-import dev.inkremental.RootViewScope
+import dev.inkremental.android.AndroidViewScope
+import dev.inkremental.android.Dip
 import dev.inkremental.attr
 import dev.inkremental.bind
 import dev.inkremental.dsl.android.CustomSdkSetter
-import dev.inkremental.dsl.android.Dip
 import dev.inkremental.dsl.android.SdkSetter
 import dev.inkremental.v
 import kotlin.Any
@@ -30,7 +30,7 @@ import kotlin.Suppress
 import kotlin.Unit
 
 fun view(configure: ViewScope.() -> Unit = {}) = v<View>(configure.bind(ViewScope))
-abstract class ViewScope : RootViewScope() {
+abstract class ViewScope : AndroidViewScope() {
   fun accessibilityDelegate(arg: View.AccessibilityDelegate?): Unit = attr("accessibilityDelegate",
       arg)
   fun accessibilityLiveRegion(arg: Int): Unit = attr("accessibilityLiveRegion", arg)

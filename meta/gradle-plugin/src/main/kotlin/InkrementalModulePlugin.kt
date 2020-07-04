@@ -51,11 +51,11 @@ class InkrementalModulePlugin : Plugin<Project> {
                 repositories {
                     maven {
                         name = "Bintray"
-                        url = uri("https://api.bintray.com/maven/" +
-                            "${prop("BINTRAY_ORG")}/" +
-                            bintrayRepo +
-                            "/${prop("POM_PACKAGE_NAME")}/" +
-                            ";publish=1" // + ";override=1"
+                        url = bintrayUri(
+                            prop("BINTRAY_ORG")!!,
+                            bintrayRepo!!,
+                            prop("POM_PACKAGE_NAME")!!,
+                            publish = true
                         )
                         credentials {
                             username = bintrayUser
@@ -106,29 +106,22 @@ class InkrementalModulePlugin : Plugin<Project> {
             }
         }
     }
-
-    private fun Project.registerAnvilPublication(
-        name: String,
-        artifactId: String,
-        version: String,
-        vararg artifacts: Any) =
-        project.extensions.getByType<PublishingExtension>()
-            .publications
-            .register<MavenPublication>(name) {
-                this.groupId = project.group.toString()
-                this.artifactId = artifactId
-                this.version = version
-                artifacts.forEach { artifact(it) }
-                fixPom(this)
-            }
 }
 
-
-fun Project.prop(key: String): String? =
-    findProperty(key)?.let { it as String }
-
-private fun Project.envOrProp(key: String): String? =
-    System.getenv(key).takeUnless(String::isNullOrEmpty) ?: prop(key)
+private fun Project.registerAnvilPublication(
+    name: String,
+    artifactId: String,
+    version: String,
+    vararg artifacts: Any) =
+    project.extensions.getByType<PublishingExtension>()
+        .publications
+        .register<MavenPublication>(name) {
+            this.groupId = project.group.toString()
+            this.artifactId = artifactId
+            this.version = version
+            artifacts.forEach { artifact(it) }
+            fixPom(this)
+        }
 
 private fun Project.fixPom(publication: MavenPublication) = publication.pom.apply {
     packaging = "aar"

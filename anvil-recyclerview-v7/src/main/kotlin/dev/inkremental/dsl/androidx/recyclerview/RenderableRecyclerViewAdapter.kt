@@ -5,7 +5,6 @@ import android.widget.FrameLayout
 import androidx.recyclerview.widget.RecyclerView
 import dev.inkremental.Inkremental.Mount
 import dev.inkremental.Inkremental.render
-import dev.inkremental.RenderableAdapter
 
 abstract class RenderableRecyclerViewAdapter<T> : RecyclerView.Adapter<RenderableRecyclerViewAdapter.MountHolder>() {
 

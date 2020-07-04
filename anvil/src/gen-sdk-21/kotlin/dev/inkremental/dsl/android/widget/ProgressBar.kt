@@ -7,9 +7,9 @@ import android.graphics.drawable.Drawable
 import android.view.animation.Interpolator
 import android.widget.ProgressBar
 import dev.inkremental.Inkremental
+import dev.inkremental.android.ColorState
 import dev.inkremental.attr
 import dev.inkremental.bind
-import dev.inkremental.dsl.android.ColorState
 import dev.inkremental.dsl.android.CustomSdkSetter
 import dev.inkremental.dsl.android.SdkSetter
 import dev.inkremental.dsl.android.view.ViewScope

@@ -6,9 +6,9 @@ import android.graphics.drawable.Drawable
 import android.view.MenuItem
 import com.google.android.material.navigation.NavigationView
 import dev.inkremental.Inkremental
+import dev.inkremental.android.ColorState
 import dev.inkremental.attr
 import dev.inkremental.bind
-import dev.inkremental.dsl.android.ColorState
 import dev.inkremental.dsl.google.android.material.CustomMaterialSetter
 import dev.inkremental.dsl.google.android.material.MaterialSetter
 import dev.inkremental.dsl.google.android.material.internal.ScrimInsetsFrameLayoutScope

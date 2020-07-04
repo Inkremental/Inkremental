@@ -10,13 +10,14 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.TextViewCompat
-import dev.inkremental.dsl.androidx.appcompat.widget.ToolbarScope
+import androidx.fragment.app.Fragment
 import dev.inkremental.Inkremental
+import dev.inkremental.android.*
 import dev.inkremental.attr
-import dev.inkremental.dip
-import dev.inkremental.dsl.android.Dip
-import dev.inkremental.dsl.android.Sp
 import dev.inkremental.dsl.androidx.appcompat.widget.AppCompatTextViewScope
+import dev.inkremental.dsl.androidx.appcompat.widget.ToolbarScope
+
+fun Fragment.renderable(r: () -> Unit): View = renderable(requireContext(), r)
 
 fun ToolbarScope.layoutGravity(gravity: Int) = attr("layoutGravity", gravity)
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

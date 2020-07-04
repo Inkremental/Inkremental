@@ -1,9 +1,9 @@
 plugins {
-    id("org.jetbrains.kotlin.multiplatform") version "1.3.61" apply false
-    id("org.jetbrains.kotlin.android") version "1.3.61" apply false
-    id("com.android.application") version "3.5.2" apply false
-    id("com.android.library") version "3.5.2" apply false
-    id("dev.inkremental.module") version "0.7.1" apply false
+    id("org.jetbrains.kotlin.multiplatform") version "1.3.72" apply false
+    id("org.jetbrains.kotlin.android") version "1.3.72" apply false
+    id("com.android.application") version "3.6.3" apply false
+    id("com.android.library") version "3.6.3" apply false
+    id("dev.inkremental.module") version "snapshot" apply false
 }
 
 fun loadProperties(fileName: String) =

@@ -110,7 +110,7 @@ abstract class GenerateDslTask : DefaultTask() {
                 addClass(scopeType) {
                     addModifiers(KModifier.PUBLIC, KModifier.ABSTRACT)
                     when (val superType = view.superType) {
-                        null -> superclass(ClassName(PACKAGE, ROOT_VIEW_SCOPE))
+                        null -> superclass(rootViewScope())
                         is ViewModelSupertype.Resolved -> superclass(superType.type.scopeType)
                         is ViewModelSupertype.Unresolved -> error("View supertype should be resolved at this point")
                     }

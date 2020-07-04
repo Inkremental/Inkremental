@@ -9,11 +9,11 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayoutScope
 import androidx.core.content.res.ResourcesCompat
 import dev.inkremental.Inkremental
+import dev.inkremental.android.r
 import dev.inkremental.attr
 import dev.inkremental.dsl.android.view.ViewScope
 import dev.inkremental.dsl.android.widget.ImageViewScope
 import dev.inkremental.dsl.android.widget.TextViewScope
-import dev.inkremental.r
 
 abstract class CompatImageViewScope : ImageViewScope() {
 

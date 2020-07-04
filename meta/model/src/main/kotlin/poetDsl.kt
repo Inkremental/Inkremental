@@ -152,3 +152,6 @@ inline fun TypeSpec.Builder.addAnnotation(type: ClassName, builderAction: Annota
 
 inline fun TypeSpec.Builder.addInitializerBlock(builderAction: CodeBlock.Builder.() -> Unit): TypeSpec.Builder =
     addInitializerBlock(buildCodeBlock(builderAction))
+
+inline fun FunSpec.Builder.addAnnotation(type: ClassName, builderAction: AnnotationSpec.Builder.() -> Unit): FunSpec.Builder =
+    addAnnotation(buildAnnotation(type, builderAction))

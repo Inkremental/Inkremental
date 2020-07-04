@@ -14,45 +14,12 @@ import android.view.*
 import android.widget.*
 import androidx.annotation.ColorRes
 import androidx.annotation.RequiresApi
-import dev.inkremental.Inkremental
-import dev.inkremental.attr
-import dev.inkremental.dip
+import dev.inkremental.*
+import dev.inkremental.android.*
 import dev.inkremental.dsl.android.view.ViewScope
 import dev.inkremental.dsl.android.widget.*
 import java.util.*
 
-// weight constants
-sealed class Size {
-    object MATCH : Size()
-    object WRAP : Size()
-    class EXACT(val size: Px) : Size()
-}
-
-// gravity constants
-const val TOP = Gravity.TOP
-const val BOTTOM = Gravity.BOTTOM
-const val LEFT = Gravity.LEFT
-const val RIGHT = Gravity.RIGHT
-const val CENTER_VERTICAL = Gravity.CENTER_VERTICAL
-const val GROW_VERTICAL = Gravity.FILL_VERTICAL
-const val CENTER_HORIZONTAL = Gravity.CENTER_HORIZONTAL
-const val GROW_HORIZONTAL = Gravity.FILL_HORIZONTAL
-const val CENTER = CENTER_VERTICAL or CENTER_HORIZONTAL
-const val GROW = GROW_VERTICAL or GROW_HORIZONTAL
-const val CLIP_VERTICAL = Gravity.CLIP_VERTICAL
-const val CLIP_HORIZONTAL = Gravity.CLIP_HORIZONTAL
-const val START = Gravity.START
-const val END = Gravity.END
-
-const val INIT_LITERAL = "init"
-
-inline class Sp(val value: Float)
-inline class Dip(val value: Int)
-inline class Px(val value: Int)
-
-inline class ColorState(@ColorRes val value : Int)
-
-fun ViewScope.init(action: (View) -> Unit) = attr(INIT_LITERAL, action)
 fun ViewScope.size(w: Size, h: Size) = attr("size", w to h)
 fun ViewScope.tag(key: Int, value: Any?) = attr("tag", key to value)
 
@@ -149,13 +116,6 @@ inline fun verticalLayout(crossinline r: LinearLayoutScope.() -> Unit) {
 
 object CustomSdkSetter : Inkremental.AttributeSetter<Any> {
     override fun set(v: View, name: String, value: Any?, prevValue: Any?): Boolean = when (name) {
-        INIT_LITERAL -> when (value) {
-            is Function<*> -> {
-                (value as (View) -> Any?)(v)
-                true
-            }
-            else -> false
-        }
         "tag" -> when {
             value is Pair<*, *> -> {
                 v.setTag(value.first as Int, value.second)

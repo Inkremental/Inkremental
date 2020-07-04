@@ -5,9 +5,9 @@ package dev.inkremental.dsl.google.android.material.tabs
 import android.graphics.drawable.Drawable
 import com.google.android.material.tabs.TabLayout
 import dev.inkremental.Inkremental
+import dev.inkremental.android.ColorState
 import dev.inkremental.attr
 import dev.inkremental.bind
-import dev.inkremental.dsl.android.ColorState
 import dev.inkremental.dsl.android.widget.HorizontalScrollViewScope
 import dev.inkremental.dsl.google.android.material.CustomMaterialSetter
 import dev.inkremental.dsl.google.android.material.MaterialSetter

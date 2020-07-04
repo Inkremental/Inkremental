@@ -5,9 +5,9 @@ package dev.inkremental.dsl.google.android.material.slider
 import android.content.res.ColorStateList
 import com.google.android.material.slider.Slider
 import dev.inkremental.Inkremental
+import dev.inkremental.android.Dip
 import dev.inkremental.attr
 import dev.inkremental.bind
-import dev.inkremental.dsl.android.Dip
 import dev.inkremental.dsl.android.view.ViewScope
 import dev.inkremental.dsl.google.android.material.CustomMaterialSetter
 import dev.inkremental.dsl.google.android.material.MaterialSetter

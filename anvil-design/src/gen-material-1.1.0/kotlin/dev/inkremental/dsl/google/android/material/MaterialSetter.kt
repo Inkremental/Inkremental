@@ -41,7 +41,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputLayout
 import dev.inkremental.Inkremental
-import dev.inkremental.dip
+import dev.inkremental.android.dip
 import kotlin.Any
 import kotlin.Boolean
 import kotlin.CharSequence

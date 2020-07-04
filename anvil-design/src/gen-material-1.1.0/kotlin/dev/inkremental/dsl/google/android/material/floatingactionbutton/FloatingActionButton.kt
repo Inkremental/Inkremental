@@ -9,9 +9,9 @@ import com.google.android.material.animation.MotionSpec
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.shape.ShapeAppearanceModel
 import dev.inkremental.Inkremental
+import dev.inkremental.android.Dip
 import dev.inkremental.attr
 import dev.inkremental.bind
-import dev.inkremental.dsl.android.Dip
 import dev.inkremental.dsl.google.android.material.CustomMaterialSetter
 import dev.inkremental.dsl.google.android.material.MaterialSetter
 import dev.inkremental.dsl.google.android.material.internal.VisibilityAwareImageButtonScope

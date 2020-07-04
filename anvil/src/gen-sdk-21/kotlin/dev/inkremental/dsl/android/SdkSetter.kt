@@ -119,7 +119,7 @@ import android.widget.ViewSwitcher
 import android.widget.ZoomButton
 import android.widget.ZoomControls
 import dev.inkremental.Inkremental
-import dev.inkremental.dip
+import dev.inkremental.android.dip
 import java.util.Locale
 import kotlin.Any
 import kotlin.Array
